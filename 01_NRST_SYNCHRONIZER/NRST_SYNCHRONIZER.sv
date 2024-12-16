@@ -33,13 +33,13 @@
 --------------------------------------------------------------------------------
 *
 -----------------------------------------------------------------------------*/
-//`default_nettype none
+`default_nettype none
 
 module NRST_SYNCHRONIZER #(
     parameter int unsigned STAGES = 2
 ) (
-    input  logic CLK_I ,
-    input  logic NRST_I,
+    input  wire  CLK_I ,
+    input  wire  NRST_I,
     output logic NRST_O
 );
 
