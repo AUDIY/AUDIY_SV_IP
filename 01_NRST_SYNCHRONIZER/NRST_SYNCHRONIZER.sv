@@ -38,8 +38,8 @@
 module NRST_SYNCHRONIZER #(
     parameter int unsigned STAGES = 2
 ) (
-    input  wire  CLK_I ,
-    input  wire  NRST_I,
+    input  var   CLK_I ,
+    input  var   NRST_I,
     output logic NRST_O
 );
 
@@ -48,7 +48,6 @@ module NRST_SYNCHRONIZER #(
     always_ff @( posedge CLK_I or negedge NRST_I ) begin: blk_assert_rst
         if ( !NRST_I ) begin
             /* When NRST_I is asserted, assert reset immediately */
-            //NRST_SYNC <= {(STAGES){1'b0}};
             NRST_SYNC <= '0;
         end else begin: blk_negate_reset
             /* Negate reset synchronized with CLK_I */
