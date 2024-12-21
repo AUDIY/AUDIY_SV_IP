@@ -38,9 +38,9 @@
 module NRST_SYNCHRONIZER #(
     parameter int unsigned STAGES = 2
 ) (
-    input  var   CLK_I ,
-    input  var   NRST_I,
-    output logic NRST_O
+    input  var CLK_I  ,
+    input  var NRST_I,
+    output var NRST_O
 );
 
     logic unsigned [STAGES - 1:0] NRST_SYNC;
