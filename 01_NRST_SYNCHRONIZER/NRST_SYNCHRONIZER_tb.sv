@@ -23,10 +23,10 @@
 *
 -----------------------------------------------------------------------------*/
 `default_nettype none
-`timescale 1ns/1ps
 
 module NRST_SYNCHRONIZER_tb ();
 
+    timeunit 1ns/1ps
     localparam int unsigned STAGES = 3;
 
     logic CLK_I  = 1'b0;
