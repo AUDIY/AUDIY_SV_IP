@@ -3,9 +3,9 @@
 *
 * Testbench for NRST_SYNCHRONIZER.sv
 *
-* Version: 1.00
+* Version: 1.01
 * Author : AUDIY
-* Date   : 2024/12/16
+* Date   : 2024/12/21
 *
 * License under CERN-OHL-P v2
 --------------------------------------------------------------------------------
@@ -23,14 +23,14 @@
 *
 -----------------------------------------------------------------------------*/
 `default_nettype none
-`timescale 1ns/1ps
 
 module NRST_SYNCHRONIZER_tb ();
 
+    timeunit 1ns/1ps;
     localparam int unsigned STAGES = 3;
 
     logic CLK_I  = 1'b0;
-    logic NRST_I = 1'b1;
+    logic NRST_I = 1'b0;
     logic NRST_O;
 
     NRST_SYNCHRONIZER #(
@@ -45,14 +45,17 @@ module NRST_SYNCHRONIZER_tb ();
         $dumpfile("NRST_SYNCHRONIZER.vcd");
         $dumpvars(0, NRST_SYNCHRONIZER_tb);
 
+        #1  NRST_I = 1'b1;
         #23 NRST_I = 1'b0;
         #14 NRST_I = 1'b1;
 
         #64 $finish();
     end
 
-    always begin
-        #2 CLK_I <= ~CLK_I;
+    initial begin
+        forever begin
+            #2 CLK_I = ~CLK_I;
+        end
     end
 
 endmodule

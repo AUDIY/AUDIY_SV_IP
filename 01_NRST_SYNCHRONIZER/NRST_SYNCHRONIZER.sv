@@ -3,9 +3,9 @@
 *
 * Asynchronous Reset (Active LOW) Synchronizer
 *
-* Version: 1.00
+* Version: 1.01
 * Author : AUDIY
-* Date   : 2024/12/16
+* Date   : 2024/12/21
 * 
 * Port
 *   Input
@@ -38,18 +38,18 @@
 module NRST_SYNCHRONIZER #(
     parameter int unsigned STAGES = 2
 ) (
-    input  bit   CLK_I ,
-    input  bit   NRST_I,
+    input  var   CLK_I ,
+    input  var   NRST_I,
     output logic NRST_O
 );
 
-    logic unsigned [STAGES - 1:0] NRST_SYNC = {(STAGES){1'b0}};
+    logic unsigned [STAGES - 1:0] NRST_SYNC;
 
-    always_ff @( posedge CLK_I or negedge NRST_I ) begin: blk_nrst_synchronizer
+    always_ff @( posedge CLK_I or negedge NRST_I ) begin: blk_assert_rst
         if ( !NRST_I ) begin
             /* When NRST_I is asserted, assert reset immediately */
-            NRST_SYNC <= {(STAGES){1'b0}};
-        end else begin
+            NRST_SYNC <= '0;
+        end else begin: blk_negate_reset
             /* Negate reset synchronized with CLK_I */
             NRST_SYNC <= {NRST_SYNC[STAGES - 2:0], 1'b1};
         end
