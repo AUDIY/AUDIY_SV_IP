@@ -3,7 +3,7 @@
 *
 * Testbench for NRST_SYNCHRONIZER.sv
 *
-* Version: 1.01
+* Version: 1.02
 * Author : AUDIY
 * Date   : 2024/12/21
 *
@@ -59,3 +59,5 @@ module NRST_SYNCHRONIZER_tb ();
     end
 
 endmodule
+
+`default_nettype wire
