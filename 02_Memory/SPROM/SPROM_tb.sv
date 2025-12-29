@@ -9,7 +9,7 @@
 *
 * License under CERN-OHL-P v2
 --------------------------------------------------------------------------------
-| Copyright AUDIY 2025.                                                        |
+| Copyright AUDIY 2025 - 2026.                                                 |
 |                                                                              |
 | This source describes Open Hardware and is licensed under the CERN-OHL-P v2. |
 |                                                                              |
@@ -105,3 +105,4 @@ module SPROM_tb ();
 endmodule
 
 `default_nettype wire
+
